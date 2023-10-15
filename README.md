@@ -2,8 +2,8 @@
 
 > Project 2 of John Class 2023.
 > Due: **November 21st**. 
-> Please do not hesitate to contact us if you have any questions about this documents
-> You can get a Chinese version of this document by throw it into [deepl.com](https://www.deepl.com/translator)
+> Please do not hesitate to contact us if you have any questions about this document.
+> You can get a Chinese version of this document by throw it into [deepl.com](https://www.deepl.com/translator).
 > Thanks to *Zhou Jiahao* and *Yang Zhenyu*, TAs of John Class 2022 who created this project.
 
 ## <a id = "1">Contents</a>
@@ -57,15 +57,15 @@
 
 ## <a id = "2"> Introduction </a>
 
-Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+Vim is a highly configurable text editor built to make, create and change any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
 
 ![vim](https://notes.sjtu.edu.cn/uploads/upload_a201d56cb84c36a2634c341aaa2fcfed.png)
 
 By simply typing ```vim <file_path>```, you can then open a file with vim. You can view text file in `Normal Mode`, insert characters in `Insert Mode` and input command in `Command Mode`. We will explain those modes in assignment details.
 
-You can take a brief lesson on vim on this [website](https://www.openvim.com/). This may take you twenty minutes or so, but covers some of the basic operations of vim, and you can also run vim in your own environment to actually try it out. Vimtutor is another helper to learn vim if you want. You can use it by simply typing `vimtutor` in your WSL.
+You can take a brief lesson on vim on this [website](https://www.openvim.com/). This may take you twenty minutes or more, but covers some of the basic operations of vim, and you can also run vim in your own environment to actually try it out. Vimtutor is another helper to learn vim if you want. You can use it by simply typing `vimtutor` in your WSL.
 
-Our assignment requirements are not as complex, but will allow you to implement a text editor that has basic functionality (with some specified extensions) and can actually be used, **starting from scratch**.
+Our assignment requirements are not as complex but will allow you to implement a text editor that has basic functionality (with some specified extensions) and can actually be used, **starting from scratch**.
 
 That means we won't give you **any existing files**, you need to complete the whole job starting from your own new directory. The **guidelines** needed to complete the project are at the back of this document, and you can always find a TA to answer questions.
 
@@ -78,7 +78,7 @@ We use this project to help you
 - Use abstraction to code clearly and simply
 - Enhance your simulation capabilities
 - Standardize your coding style
-- Be familiar about command line
+- Be familiar with the command line
 - Use CMake to compile your project
 - Understand the compilation of multiple `.cpp`, `.h` and other files(Optional)
 
@@ -91,9 +91,9 @@ We use this project to help you
 
   Your TUI(Terminal User Interface) should look like this.
 
-  * File Window displays the opened file, and you can edit file in this window.
+  * File Window displays the opened file, and you can edit a file in this window.
   * Information Window displays some file-related information. Here's the minimum information you should display: `Mode`, `Filename`, `Cursor line and column`.
-  * Command Window displays the commands user input. **Note that you should print a `:` at the beginning of command window when enter command mode.**
+  * Command Window displays the commands the user input. **Note that you should print a `:` at the beginning of the command window when enter the command mode.**
 
   <center>
           <img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/windows.png" 
@@ -101,16 +101,16 @@ We use this project to help you
        width="300" height="200"/>
   </center>
 
-  
+
 
   #### <a id = "4.1.2"> Multiple modes </a>
 
      * Normal mode:
        In normal mode, we can move the cursor and browse the opened file by $\uparrow \downarrow \leftarrow \rightarrow$.
      * Insert mode:
-       In insert mode, we can edit file by moving cursor. Edit file include append, modify and deletion (just like vim).
+       In insert mode, we can edit file by moving cursor. Edit file like appending, modifying and deleting (just like vim).
      * Command mode:
-       In command mode, we can type in and execute some command.
+       In command mode, we can type in and execute some commands.
     
      Mode switching graph is shown below:
     
@@ -144,7 +144,7 @@ We use this project to help you
      You should support several base commands:
     
      * `:w`: Save the file.
-     * `:q`: Quit. Warn user if the file is changed and is unsaved.
+     * `:q`: Quit. Warn user if the file is changed but unsaved.
      * `:q!`: Force quit (i.e. Do not save the file and force quit.).
      * `:wq`: Save then quit.
 
@@ -152,17 +152,17 @@ We use this project to help you
 
   #### <a id = "4.2.1"> Word Completion </a>
 
-  MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user to select words by numbers or $\leftarrow \rightarrow$ (just like your `shu ru fa`. I really do not know what it is in English TAT ).
+MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user select words by numbers or $\leftarrow \rightarrow$ (just like your `shu ru fa`. I really do not know what it is in English TAT ).
 
     You can get the english word library named `words_alpha.txt` in this repo.
 
   #### <a id = "4.2.2"> Search and Substitution </a>
 
-  Minivim supports searching for a word in the full file and substitute it to another word. User may use command `:sub "stone" "gold"` to substitute stone with gold.
+Minivim supports searching for a word in the full file and substituting it with another word. User may use command `:sub "stone" "gold"` to substitute stone with gold.
 
   #### <a id = "4.2.3"> Line Number and Jump </a>
 
-  MiniVim supports displaying line number at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
+  MiniVim supports displaying a line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
 
   #### <a id = "4.2.4"> Shortcut Key </a>
 
@@ -184,16 +184,16 @@ We use this project to help you
 
   ### <a id = "4.3"> Conventions </a>
 
-  * If the number of file lines exceeds the maximum number of lines in file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
+  * If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
   * Your cursor should NOT exceed the end of a line and the end of the file.
-  * About length of `tab`: a better way to handle `\t` is seeing `\t` as fixed number of spaces, like 4 or 2. Also, you can simulate its behaviour in vim, but sometimes it's too complex and confusing. We highly **recommand**(just recommand) you to seen it as 4 spaces. 
+  * About the length of `tab`: a better way to handle `\t` is to seeing `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces. 
   * About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
-  * In vim if one line has too much characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to move your windows left or right if the cursor exceed the windows. You can choose any way you want and implement it.
-  * When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of length of this line and the following line. You need to implement this in your minivim. For example, if we have three line with length of $10, 5, 12$ respectively and your cursor is at the $8$th char of the first line. When press $\downarrow$, the cursor will move to end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must assure that now the cursor is at the $8$th character of the third line. After that you Press $\uparrow$ two times, and the cursor must return to the $8$th char in the first line. In short, when press $\uparrow$ or $\downarrow$, minivim need to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers.
+  * In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to move your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it.
+  * When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of the length of this line and the following line. You need to implement this in your minivim. For example, if we have three lines with lengths of $10, 5, 12$ respectively and your cursor is at the $8$th char of the first line. When press $\downarrow$, the cursor will move to the end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must ensure that now the cursor is at the $8$th character of the third line. After that, you Press $\uparrow$ two times, and the cursor must return to the $8$th char in the first line. In short, when pressing $\uparrow$ or $\downarrow$, minivim need to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers.
 
   These are some conventions you need to follow. You are asked to implement these features compulsively. 
 
-  Also, if you are not sure about other features that you need to implement, please contact us in a **shared documentation**(the link is in Wechat group). We will give definite answers about your questions.
+  Also, if you are not sure about other features that you need to implement, please contact us in **shared documentation**(the link is in WeChat group). We will give definite answers to your questions.
 
   ## <a id = "5"> Environment </a>
 
@@ -260,15 +260,15 @@ We use this project to help you
 
   #### <a id = "5.3.2"> Use VSCode to code in WSL </a>
 
-  One thing we need to know is that WSL shares the file system with windows system, which means we can create the project in any directory you want in windows but compile the project in WSL. That is really useful for me.
+  One thing we need to know is that WSL shares the file system with Windows system, which means we can create the project in any directory you want in Windows but compile the project in WSL. That is really useful for me.
 
   You need to
 
-  1. create a new project directory. The project is no need to locate in the file system of Ubuntu. You can put it anywhere you want, but do remember the path of it.
+  1. create a new project directory. The project does no need to be located in the file system of Ubuntu. You can put it anywhere you want but do remember the path of it.
   2. create `CMakeList.txt` and do as we have said in [Use Clion to code in WSL](#Use-VSCode-to-code-in-WSL).
-  3. open your VSCode, click `File / Open Folder` to open your project file.
-  4. click the button which looks like two A4 overlapping each other. Left of your screen will show files and sub-directories in your project. You can click any of it and editor it.
-  5. open your VSCode terminal, type in `wsl` to use WSL. When you are in your WSL, type `make`. If everything about your project is done, there will be a `minivim` executable(I don't know how to call a executable in Linux, maybe it's name is not executable) in your `bin` sub-directory.
+  3. open your VSCode, and click `File / Open Folder` to open your project file.
+  4. click the button which looks like two A4 overlapping each other. Left of your screen will show files and sub-directories in your project. You can click any of it and edit it.
+  5. open your VSCode terminal, and type in `wsl` to use WSL. When you are in your WSL, type `make`. If everything about your project is done, there will be a `minivim` executable(I don't know how to call an executable in Linux, maybe its name is not executable) in your `bin` sub-directory.
 
   ### <a id = "5.4"> Ncurses Install </a>
 
@@ -317,9 +317,9 @@ We use this project to help you
        />
   </center>
 
-  
 
-  
+
+
 
 
   File window displays opened file, and user can edit file in this window. Information window displays some file informations such as *filename*, *edit mode* and so on. Command window displays the command input by user in command mode.
@@ -338,9 +338,9 @@ We use this project to help you
        width="300" height="200"/>
   </center>
 
-  
 
-  
+
+
 
   And we can get the begin position by `getbegyx(win, y, x)` and max position by `getmaxyx(win, y, x)`.
 
@@ -620,12 +620,12 @@ We use this project to help you
 
   ## <a id = "8"> Suggestions </a>
 
-  To help you about your project, we have some suggestions for you.
+  To help you with your project, we have some suggestions for you.
 
-  1. When come across some problems, try handle them yourself at first. Google or baidu are all good methods to solve your problems. After that, if you are not satisfied about the answer, you can ask for TAs for free.
-  2. Try install all the environments that the project needs. Affirm that they are working well and then begin your project.
-  3. When at the beginning of your project, try to take a research of the demo cpp file, figuring out how it works. Also, you can change some arguments in the file to make the TUI displayed as you like.
-  4. Before coding, try to think about how to break up your project as several independent parts, like *file processing* model, *window processing* model, *cursor processing* model, *contents processing* model and something else. You can do it in your will. We don't acquire it, but it's a good habit when you're coding and it will make the whole thing easier.
-  5. An important thing is that you'd better consider about how to store your file in the program, how to insert a char and how to append a line.
-  6. After all above have done, try to test the effect after you change or add something in your program. **This project is not standardized. That means your grade depends on your ultimate performance, which means performance of your program is really important.**
-  7. You can communicate with your classmates. **Plagiarism is forbidden in John Class. We welcome idea exchanges, but any form of cheat will be take seriously. If you're not sure about your behaviour, please talk with us in case of misunderstanding.**
+  1. When come across some problems, try to handle them yourself at first. Google or Baidu are all good methods to solve your problems. After that, if you are not satisfied with the answer, you can ask for TAs for free.
+  2. Try to install all the environments that the project needs. Affirm that they are working well and then begin your project.
+  3. At the beginning of your project, try to take research of the demo cpp file, figuring out how it works. Also, you can change some arguments in the file to make the TUI displayed as you like.
+  4. Before coding, try to think about how to break up your project into several independent parts, like *file processing* model, *window processing* model, *cursor processing* model, *contents processing* model and something else. You can do it in your will. We don't acquire it, but it's a good habit when you're coding and it will make the whole thing easier.
+  5. An important thing is that you'd better consider how to store your file in the program, how to insert a char, and how to append a line.
+  6. After all the above has been done, try to test the effect after you change or add something to your program. **This project is not standardized. That means your grade depends on your ultimate performance, which means the performance of your program is really important.**
+  7. You can communicate with your classmates. **Plagiarism is forbidden in John Class. We welcome idea exchanges, but any form of cheat will be taken seriously. If you're not sure about your behavior, please talk with us in case of misunderstandings.**
