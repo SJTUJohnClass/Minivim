@@ -1,86 +1,86 @@
-+ # Assignment 2: MiniVim
+# Assignment 2: MiniVim
 
-  > Project 2 of John Class 2023.
-  > Due: **November 21st**. 
-  > Please do not hesitate to contact us if you have any questions about this documents
-  > You can get a Chinese version of this document by throw it into [deepl.com](https://www.deepl.com/translator)
-  > Thanks to *Zhou Jiahao* and *Yang Zhenyu*, TAs of John Class 2022 who created this project.
+> Project 2 of John Class 2023.
+> Due: **November 21st**. 
+> Please do not hesitate to contact us if you have any questions about this documents
+> You can get a Chinese version of this document by throw it into [deepl.com](https://www.deepl.com/translator)
+> Thanks to *Zhou Jiahao* and *Yang Zhenyu*, TAs of John Class 2022 who created this project.
 
-  ## <a id = "1">Contents</a>
+## <a id = "1">Contents</a>
 
-  - [Contents](#1)
-  - [Introduction](#2)
-  - [Our Purposes](#3)
-  - [Assignment](#4)
-    - [Basic](#4.1)
-      - [Base TUI](#4.1.1)
-      - [Multiple modes](#4.1.2)
-      - [Command line arguments](#4.1.3)
-      - [Commands](#4.1.4)
-    - [Extension](#4.2)
-      - [Word Completion](#4.2.1)
-      - [Search and Substitution](#4.2.2)
-      - [Line Number and Jump](#4.2.3)
-      - [Shortcut Key](#4.2.4)
-      - [Command History](#4.2.5)
-      - [Path and relative path](#4.2.6)
-    - [Conventions](#4.3)
-  - [Environment](#5)
-    - [WSL install](#5.1)
-      - [Install WSL](#5.1.1)
-      - [Install Building Tools](#5.1.2)
-    - [Change APT Source(If needed)](#5.2)
-    - [Editor files in WSL](#5.3)
-      - [Use Clion to Code in WSL](#5.3.1)
-      - [Use VSCode to code in WSL](#5.3.2)
-    - [Ncurses Install](#5.4)
-    - [CMake Install](#5.5)
-  - [Guideline](#6)
-    - [Keyboard](#6.1)
-    - [Ncurses](#6.2)
-      - [Window](#6.2.1)
-      - [Cursor](#6.2.2)
-      - [Some Setup Function](#6.2.3)
-      - [Simple Demo](#6.2.4)
-      - [More Informations](#6.2.5)
-    - [Command Line Arguments](#6.3)
-      - [Manually Parsing](#6.3.1)
-      - [GNU `getopt` Function(Optional)](#6.3.2)
-      - [Using Third-party Library(Optional)](#6.3.3)
-    - [Project Layout](#6.4)
-      - [Example](#6.4.1)
-      - [Build Above Project Using CMake](#6.4.4)
-    - [Introduction to Extension: Word Completion(Optional)](#6.5)
-      - [Usage](#6.5.1)
-  - [Grade](#7)
-  - [Suggestions](#8)
+- [Contents](#1)
+- [Introduction](#2)
+- [Our Purposes](#3)
+- [Assignment](#4)
+  - [Basic](#4.1)
+    - [Base TUI](#4.1.1)
+    - [Multiple modes](#4.1.2)
+    - [Command line arguments](#4.1.3)
+    - [Commands](#4.1.4)
+  - [Extension](#4.2)
+    - [Word Completion](#4.2.1)
+    - [Search and Substitution](#4.2.2)
+    - [Line Number and Jump](#4.2.3)
+    - [Shortcut Key](#4.2.4)
+    - [Command History](#4.2.5)
+    - [Path and relative path](#4.2.6)
+  - [Conventions](#4.3)
+- [Environment](#5)
+  - [WSL install](#5.1)
+    - [Install WSL](#5.1.1)
+    - [Install Building Tools](#5.1.2)
+  - [Change APT Source(If needed)](#5.2)
+  - [Editor files in WSL](#5.3)
+    - [Use Clion to Code in WSL](#5.3.1)
+    - [Use VSCode to code in WSL](#5.3.2)
+  - [Ncurses Install](#5.4)
+  - [CMake Install](#5.5)
+- [Guideline](#6)
+  - [Keyboard](#6.1)
+  - [Ncurses](#6.2)
+    - [Window](#6.2.1)
+    - [Cursor](#6.2.2)
+    - [Some Setup Function](#6.2.3)
+    - [Simple Demo](#6.2.4)
+    - [More Informations](#6.2.5)
+  - [Command Line Arguments](#6.3)
+    - [Manually Parsing](#6.3.1)
+    - [GNU `getopt` Function(Optional)](#6.3.2)
+    - [Using Third-party Library(Optional)](#6.3.3)
+  - [Project Layout](#6.4)
+    - [Example](#6.4.1)
+    - [Build Above Project Using CMake](#6.4.4)
+  - [Introduction to Extension: Word Completion(Optional)](#6.5)
+    - [Usage](#6.5.1)
+- [Grade](#7)
+- [Suggestions](#8)
 
-  ## <a id = "2"> Introduction </a>
+## <a id = "2"> Introduction </a>
 
-  Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
 
-  ![vim](https://notes.sjtu.edu.cn/uploads/upload_a201d56cb84c36a2634c341aaa2fcfed.png)
+![vim](https://notes.sjtu.edu.cn/uploads/upload_a201d56cb84c36a2634c341aaa2fcfed.png)
 
-  By simply typing ```vim <file_path>```, you can then open a file with vim. You can view text file in `Normal Mode`, insert characters in `Insert Mode` and input command in `Command Mode`. We will explain those modes in assignment details.
+By simply typing ```vim <file_path>```, you can then open a file with vim. You can view text file in `Normal Mode`, insert characters in `Insert Mode` and input command in `Command Mode`. We will explain those modes in assignment details.
 
-  You can take a brief lesson on vim on this [website](https://www.openvim.com/). This may take you twenty minutes or so, but covers some of the basic operations of vim, and you can also run vim in your own environment to actually try it out. Vimtutor is another helper to learn vim if you want. You can use it by simply typing `vimtutor` in your WSL.
+You can take a brief lesson on vim on this [website](https://www.openvim.com/). This may take you twenty minutes or so, but covers some of the basic operations of vim, and you can also run vim in your own environment to actually try it out. Vimtutor is another helper to learn vim if you want. You can use it by simply typing `vimtutor` in your WSL.
 
-  Our assignment requirements are not as complex, but will allow you to implement a text editor that has basic functionality (with some specified extensions) and can actually be used, **starting from scratch**.
+Our assignment requirements are not as complex, but will allow you to implement a text editor that has basic functionality (with some specified extensions) and can actually be used, **starting from scratch**.
 
-  That means we won't give you **any existing files**, you need to complete the whole job starting from your own new directory. The **guidelines** needed to complete the project are at the back of this document, and you can always find a TA to answer questions.
+That means we won't give you **any existing files**, you need to complete the whole job starting from your own new directory. The **guidelines** needed to complete the project are at the back of this document, and you can always find a TA to answer questions.
 
-  ## <a id = "3"> Our Purposes </a>
+## <a id = "3"> Our Purposes </a>
 
-  We use this project to help you
+We use this project to help you
 
-  - Learn how to use STL libraries
-  - Learn about project layout
-  - Use abstraction to code clearly and simply
-  - Enhance your simulation capabilities
-  - Standardize your coding style
-  - Be familiar about command line
-  - Use CMake to compile your project
-  - Understand the compilation of multiple `.cpp`, `.h` and other files(Optional)
+- Learn how to use STL libraries
+- Learn about project layout
+- Use abstraction to code clearly and simply
+- Enhance your simulation capabilities
+- Standardize your coding style
+- Be familiar about command line
+- Use CMake to compile your project
+- Understand the compilation of multiple `.cpp`, `.h` and other files(Optional)
 
 
   ## <a id = "4"> Assignment </a>
@@ -110,15 +110,15 @@
        In insert mode, we can edit file by moving cursor. Edit file include append, modify and deletion (just like vim).
      * Command mode:
        In command mode, we can type in and execute some command.
-
+    
      Mode switching graph is shown below:
-
+    
      <center>
      <img src="https://notes.sjtu.edu.cn/uploads/upload_a831ce106e1b6fb64685636964f9ec69.png" 
       alt="Mode Switch"
       width="300" height="200"/>
      </center>
-  
+
 
 
   #### <a id = "4.1.3"> Command line arguments </a>
@@ -131,17 +131,17 @@
 
      This command will open a file specified by `<filename>` in your minivim. The file is under the directory of your minivim executable file. If the file doesn't exist, create it.
      You should support several optional arguments in command line:
-
+    
      * `-t`: open file in truncation mode. You should truncate the file from the beginning.
      * `-R`: open a file in **read-only** mode.
-
+    
      To start your MiniVim by `minivim` rather than `PATH/TO/MiniVim`, you may need to add your executable file to `/bin` or export your executable file to `$PATH`. See more details in [Export to PATH](https://stackoverflow.com/questions/56981754/how-to-make-a-programme-executable-anywhere-in-the-shell).
 
 
   #### <a id = "4.1.4"> Commands </a>
 
      You should support several base commands:
-
+    
      * `:w`: Save the file.
      * `:q`: Quit. Warn user if the file is changed and is unsaved.
      * `:q!`: Force quit (i.e. Do not save the file and force quit.).
