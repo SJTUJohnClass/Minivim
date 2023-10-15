@@ -96,10 +96,11 @@ We use this project to help you
   * Command Window displays the commands user input. **Note that you should print a `:` at the beginning of command window when enter command mode.**
 
   <center>
-          <img src="https://notes.sjtu.edu.cn/uploads/upload_8569fec86ae01e1f1f98fbe53198cd32.png" 
+          <img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/windows.png" 
        alt="Window Layout"
        width="300" height="200"/>
   </center>
+
   
 
   #### <a id = "4.1.2"> Multiple modes </a>
@@ -114,7 +115,7 @@ We use this project to help you
      Mode switching graph is shown below:
     
      <center>
-     <img src="https://notes.sjtu.edu.cn/uploads/upload_a831ce106e1b6fb64685636964f9ec69.png" 
+     <img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/mode_transference.png" 
       alt="Mode Switch"
       width="300" height="200"/>
      </center>
@@ -307,14 +308,15 @@ We use this project to help you
   Window is a square area in your terminal. In this project, the whole terminal is simply divided into 3 windows.
 
   <center class="half">
-  <img src="https://notes.sjtu.edu.cn/uploads/upload_8569fec86ae01e1f1f98fbe53198cd32.png" 
+  <img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/windows.png" 
        alt="Window Layout"
        width="300" height="200"/><img 
-       src="https://notes.sjtu.edu.cn/uploads/upload_45df21b34dff77ab92383bb08db316d4.png" 
+       src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/effect.png" 
        alt="Demo Layout" 
        width="300" height="200"
        />
   </center>
+
   
 
   
@@ -331,10 +333,11 @@ We use this project to help you
   By the way, the coordinates of windows is shown below: 
 
   <center>
-  <img src="https://notes.sjtu.edu.cn/uploads/upload_dd5a3e05947c39302150ae8ba4c49e50.png" 
+  <img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/axles.png" 
        alt="Window Layout"
        width="300" height="200"/>
   </center>
+
   
 
   
