@@ -165,9 +165,9 @@ We use this project to help you
   #### <a id = "4.2.1"> Word Completion </a>
 
     MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user select words.
-    To complete current word, the user should first press 'Tab'. If there is more than one option, the user should then enter numbers (to choose the word) or $\leftarrow \rightarrow$ (to switch between the pages, just like your `shu ru fa`. I really do not know what it is in English TAT). Otherwise, your program should complete the words directly after 'Tab' is pressed.
+    To complete the current word, the user should first press `Tab`. If there is more than one option, the user should then enter numbers (to choose the word) or $\leftarrow \rightarrow$ (to switch between the pages, just like your `shu ru fa`. I really do not know what it is in English TAT). Otherwise, your program should complete the words directly after 'Tab' is pressed.
   
-    If the user want to type 'Tab', they should press 'Tab' twice.
+    If the user want to type `Tab`, they should press `Tab` twice if this extension is implemented.
 
     You can get the english word library named `words_alpha.txt` in this repo.
 
