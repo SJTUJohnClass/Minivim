@@ -136,7 +136,7 @@ We use this project to help you
     
      * `-t`: open file in truncation mode. You should truncate the file from the beginning.
      * `-R`: open a file in **read-only** mode.
-     * `-W b/s`: wrap the lines by line breaks / scrolling (extension)
+     * `-W break/scroll`: wrap the lines by line breaks / scrolling (extension)
     
      To start your MiniVim by `minivim` rather than `PATH/TO/MiniVim`, you may need to add your executable file to `/bin` or export your executable file to `$PATH`. See more details in [Export to PATH](https://stackoverflow.com/questions/56981754/how-to-make-a-programme-executable-anywhere-in-the-shell).
 
@@ -178,7 +178,7 @@ We use this project to help you
 
   #### <a id = "4.2.4"> Line Wrapping </a>
 
-    In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete this extension by implementing both, switched by using '-W b'(default) or '-W s' in program arguments.
+    In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete this extension by implementing both, switched by using '-W break'(default) or '-W scroll' in program arguments.
 
   #### <a id = "4.2.5"> Command History </a>
 
