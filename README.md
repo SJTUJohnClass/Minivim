@@ -178,7 +178,7 @@ We use this project to help you
 
   #### <a id = "4.2.4"> Line Wrapping </a>
 
-    In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete an extension by implementing both, switched by using '-W b'(default) or '-W s' in program arguments.
+    In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete this extension by implementing both, switched by using '-W b'(default) or '-W s' in program arguments.
 
   #### <a id = "4.2.5"> Command History </a>
 
