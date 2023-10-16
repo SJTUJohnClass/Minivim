@@ -164,29 +164,29 @@ We use this project to help you
 
   #### <a id = "4.2.1"> Word Completion </a>
 
-MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user select words by numbers or $\leftarrow \rightarrow$ (just like your `shu ru fa`. I really do not know what it is in English TAT ).
+    MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user select words by numbers or $\leftarrow \rightarrow$ (just like your `shu ru fa`. I really do not know what it is in English TAT ).
 
     You can get the english word library named `words_alpha.txt` in this repo.
 
   #### <a id = "4.2.2"> Search and Substitution </a>
 
-Minivim supports searching for a word in the full file and substituting it with another word. User may use command `:sub "stone" "gold"` to substitute stone with gold.
+    Minivim supports searching for a word in the full file and substituting it with another word. User may use command `:sub "stone" "gold"` to substitute stone with gold.
 
   #### <a id = "4.2.3"> Line Number and Jump </a>
 
-  MiniVim supports displaying a line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
+    MiniVim supports displaying a line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
 
   #### <a id = "4.2.4"> Line Wrapping </a>
 
-  In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete an extension by implementing both, switched by using '-W b'(default) or '-W s' in program arguments.
+    In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete an extension by implementing both, switched by using '-W b'(default) or '-W s' in program arguments.
 
   #### <a id = "4.2.5"> Command History </a>
 
-  MiniVim supports browse command previously entered in **Command Mode** by $\uparrow \downarrow$.
+    MiniVim supports browse command previously entered in **Command Mode** by $\uparrow \downarrow$.
 
   #### <a id = "4.2.6"> Path and relative path </a>
 
-  Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file.
+    Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file.
 
   ### <a id = "4.3"> Conventions </a>
 
