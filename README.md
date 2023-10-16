@@ -602,17 +602,18 @@ Minivim supports searching for a word in the full file and substituting it with 
 
   ## <a id = "7"> Grade </a>
 
-  + Basic: total 55
+  + Basic: total 60
     + Base terminal user interface: 10
     + Multiple modes & Text Edit: 25
     + In-editor Commands: 5
     + Command line arguments: 5
     + File persistence: 10
-  + Extensions: up to 25
-    + Word Completion: 15
-    + Search and Substitution: 10
-    + Line Number and Jump: 5
     + Shortcut Key: 5
+  + Extensions: up to 20
+    + Word Completion: 10
+    + Search and Substitution: 10
+    + Another way of line wrapping: 10
+    + Line Number and Jump: 5
     + Command History: 5
     + Path and relative path: 5
   + Coding Conventions & Project Layout: 10
