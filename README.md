@@ -619,7 +619,7 @@ We use this project to help you
     + Shortcut Key: 5
   + Extensions: up to 20
     + Word Completion: 10
-    + Search and Substitution: 10
+    + Search and Substitution: 5
     + Another way of line wrapping: 10
     + Line Number and Jump: 5
     + Command History: 5
