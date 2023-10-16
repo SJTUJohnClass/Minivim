@@ -150,9 +150,9 @@ We use this project to help you
      * `:q!`: Force quit (i.e. Do not save the file and force quit.).
      * `:wq`: Save then quit.
  
-  #### <a id = "4.1.5"> Shortcut Key </a>
+  #### <a id = "4.1.5"> Shortcut Keys </a>
 
-  You should support several shortcut key in **Normal Mode**:
+  You should support several shortcut keys in **Normal Mode**:
 
     * `dd`: delete the entire line that the cursor is currently on.
     * `O`: Move the cursor to the beginning of the line.
