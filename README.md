@@ -17,11 +17,12 @@
     - [Multiple modes](#4.1.2)
     - [Command line arguments](#4.1.3)
     - [Commands](#4.1.4)
+    - [Shortcut Keys](#4.1.5)
   - [Extension](#4.2)
     - [Word Completion](#4.2.1)
     - [Search and Substitution](#4.2.2)
     - [Line Number and Jump](#4.2.3)
-    - [Shortcut Key](#4.2.4)
+    - [Line Wrapping](#4.2.4)
     - [Command History](#4.2.5)
     - [Path and relative path](#4.2.6)
   - [Conventions](#4.3)
@@ -135,6 +136,7 @@ We use this project to help you
     
      * `-t`: open file in truncation mode. You should truncate the file from the beginning.
      * `-R`: open a file in **read-only** mode.
+     * `-W b/s`: wrap the lines by line breaks / scrolling (extension)
     
      To start your MiniVim by `minivim` rather than `PATH/TO/MiniVim`, you may need to add your executable file to `/bin` or export your executable file to `$PATH`. See more details in [Export to PATH](https://stackoverflow.com/questions/56981754/how-to-make-a-programme-executable-anywhere-in-the-shell).
 
@@ -147,6 +149,16 @@ We use this project to help you
      * `:q`: Quit. Warn user if the file is changed but unsaved.
      * `:q!`: Force quit (i.e. Do not save the file and force quit.).
      * `:wq`: Save then quit.
+ 
+  #### <a id = "4.1.5"> Shortcut Key </a>
+
+  You should support several shortcut key in **Normal Mode**:
+
+    * `dd`: delete the entire line that the cursor is currently on.
+    * `O`: Move the cursor to the beginning of the line.
+    * `$`: Move the cursor to the end of the line.
+    * `w`: Move forward one word (delimited by a white space or a new line).
+    * `b`: Move backward one word (delimited by a white space or a new line).
 
   ### <a id = "4.2"> Extension </a>
 
@@ -164,15 +176,9 @@ Minivim supports searching for a word in the full file and substituting it with 
 
   MiniVim supports displaying a line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
 
-  #### <a id = "4.2.4"> Shortcut Key </a>
+  #### <a id = "4.2.4"> Line Wrapping </a>
 
-  MiniVim supports several shortcut key in **Normal Mode**:
-
-    * `dd`: delete the entire line that the cursor is currently on.
-    * `O`: Move the cursor to the beginning of the line.
-    * `$`: Move the cursor to the end of the line.
-    * `w`: Move forward one word (delimited by a white space or a new line).
-    * `b`: Move backward one word (delimited by a white space or a new line).
+  In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete an extension by implementing both, switched by using '-W b'(default) or '-W s' in program arguments.
 
   #### <a id = "4.2.5"> Command History </a>
 
@@ -188,7 +194,6 @@ Minivim supports searching for a word in the full file and substituting it with 
   * Your cursor should NOT exceed the end of a line and the end of the file.
   * About the length of `tab`: a better way to handle `\t` is to seeing `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces. 
   * About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
-  * In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to move your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it.
   * When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of the length of this line and the following line. You need to implement this in your minivim. For example, if we have three lines with lengths of $10, 5, 12$ respectively and your cursor is at the $8$th char of the first line. When press $\downarrow$, the cursor will move to the end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must ensure that now the cursor is at the $8$th character of the third line. After that, you Press $\uparrow$ two times, and the cursor must return to the $8$th char in the first line. In short, when pressing $\uparrow$ or $\downarrow$, minivim need to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers.
 
   These are some conventions you need to follow. You are asked to implement these features compulsively. 
