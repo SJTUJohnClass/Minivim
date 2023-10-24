@@ -51,6 +51,7 @@
   - [Project Layout](#6.4)
     - [Example](#6.4.1)
     - [Build Above Project Using CMake](#6.4.4)
+    - [Using CMake to compile ncurses_demo.cpp](#6.4.4)
   - [Introduction to Extension: Word Completion(Optional)](#6.5)
     - [Usage](#6.5.1)
 - [Grade](#7)
@@ -149,7 +150,7 @@ We use this project to help you
      * `:q`: Quit. Warn user if the file is changed but unsaved.
      * `:q!`: Force quit (i.e. Do not save the file and force quit.).
      * `:wq`: Save then quit.
- 
+
   #### <a id = "4.1.5"> Shortcut Keys </a>
 
   You should support several shortcut keys in **Normal Mode**:
@@ -165,11 +166,11 @@ We use this project to help you
   #### <a id = "4.2.1"> Word Completion </a>
 
     MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user select words.
-  
+      
     To complete the current word, the user should first press `Tab`. If there is more than one option, the user should then enter numbers (to choose the word), press $\leftarrow \rightarrow$ / $\uparrow \downarrow$ / $+ -$ (to switch between the pages, just like your `shu ru fa` I really do not know what it is in English TAT), or press `Esc` to quit. Otherwise if there is only one option, your program should complete the words directly after 'Tab' is pressed.
-  
+      
     If the user want to type `Tab`, they should press `Tab` twice if this extension is implemented.
-
+    
     You can get the english word library named `words_alpha.txt` in this repo.
 
   #### <a id = "4.2.2"> Search and Substitution </a>
@@ -544,6 +545,21 @@ We use this project to help you
   ```
 
   For more example & usage, see [ttroy50/cmake-examples](https://github.com/ttroy50/cmake-examples), ranging from basic hello-world project to complicated features, with detailed explanation. [on-demand, Recommended]
+
+#### <a id = "6.4.5">Using CMake to compile ncurses_demo.cpp</a>
+
+We upload a project directory in the git repo, which includes a "CMakeLists.txt" and a "ncurses_demo.cpp" in the "src" sub-directory.
+
+To compile the `ncurses_demo.cpp`, we suggest you opening the `project` directory in WSL, and type in the following commands
+
+```
+cmake -B build
+cmake --build build --target minivim
+```
+
+If all things goes well, there will be a "minivim" executable in the `bin` sub-directory. Try to call it by `./bin/minivim`, and you will see a TUI.
+
+> In fact, the way we ask you to open "minivim" file is call `minivim` instead of `./bin/minivim`. To implement this, you need to add it to `$PATH`. Tutorials are in [here](#4.1.3)
 
   ### <a id = "6.5"> Introduction to Extension: Word Completion(Optional) </a>
 
