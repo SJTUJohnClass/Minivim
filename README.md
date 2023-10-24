@@ -179,6 +179,14 @@ You can get the english word library named `words_alpha.txt` in this repo.
 #### <a id = "4.2.2"> Search and Substitution </a>
 
 Minivim supports searching for a word in the full file and substituting it with another word. User may use command `:sub "stone" "gold"` to substitute stone with gold.
+=======
+  * If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
+  * Your cursor should NOT exceed the end of a line and the end of the file.
+  * About the length of `tab`: a better way to handle `\t` is to seeing `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces. 
+  * About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
+  * When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of the length of this line and the following line. You need to implement this in your minivim. For example, if we have three lines with lengths of $10, 5, 12$ respectively and your cursor is at the $8$ th char of the first line. When press $\downarrow$, the cursor will move to the end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must ensure that now the cursor is at the $8$ th character of the third line. After that, you Press $\uparrow$ two times, and the cursor must return to the $8$ th char in the first line. In short, when pressing $\uparrow$ or $\downarrow$, minivim need to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers.
+
+  Also, if you are not sure about other features that you need to implement, please contact us directly. We will give definite answers to your questions.
 
 #### <a id = "4.2.3"> Line Number and Jump </a>
 
