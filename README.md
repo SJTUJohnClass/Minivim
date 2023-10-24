@@ -179,7 +179,7 @@ You can get the english word library named `words_alpha.txt` in this repo.
 #### <a id = "4.2.2"> Search and Substitution </a>
 
 Minivim supports searching for a word in the full file and substituting it with another word. User may use command `:sub "stone" "gold"` to substitute stone with gold.
-=======
+
   * If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
   * Your cursor should NOT exceed the end of a line and the end of the file.
   * About the length of `tab`: a better way to handle `\t` is to seeing `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces. 
@@ -190,7 +190,7 @@ Minivim supports searching for a word in the full file and substituting it with 
 
 #### <a id = "4.2.3"> Line Number and Jump </a>
 
-MiniVim supports displaying a line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
+MiniVim supports displaying line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
 
 #### <a id = "4.2.4"> Line Wrapping </a>
 
