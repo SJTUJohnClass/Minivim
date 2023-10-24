@@ -1,1 +1,0 @@
-/usr/bin/c++ "CMakeFiles/example-bin.dir/src/ncurses_demo.cpp.o" -o "/mnt/d/Documents/Homework And Notes/Second Year/First semester/Programming TA/Minivim/bin/example-bin"  -lcurses 

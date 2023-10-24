@@ -1,3 +1,0 @@
-/mnt/d/Documents/Homework And Notes/Second Year/First semester/Programming TA/Minivim/build/CMakeFiles/minivim.dir
-/mnt/d/Documents/Homework And Notes/Second Year/First semester/Programming TA/Minivim/build/CMakeFiles/edit_cache.dir
-/mnt/d/Documents/Homework And Notes/Second Year/First semester/Programming TA/Minivim/build/CMakeFiles/rebuild_cache.dir
