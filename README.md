@@ -159,7 +159,7 @@ Your TUI(Terminal User Interface) should look like this.
 You should support several shortcut keys in **Normal Mode**:
 
 * `dd`: delete the entire line that the cursor is currently on.
-* `O`: Move the cursor to the beginning of the line.
+* `0`: Move the cursor to the beginning of the line.
 * `$`: Move the cursor to the end of the line.
 * `w`: Move forward one word (delimited by a white space or a new line).
 * `b`: Move backward one word (delimited by a white space or a new line).
