@@ -207,7 +207,7 @@ Remember we call `minivim [options] <filename>` to use minivim and the file we o
 
 These are some conventions you need to follow. You are asked to implement these features compulsively. **Violation of these conventions may dock your score of the basic part. Please read and follow them meticulously**
 
-* If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
+* If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window. 
 * Similar to vim, in normal mode, your cursor should NOT exceed the end of a line and the end of the file; whereas in insert mode, your cursor should BE ABLE TO reach the end of a line and the end of the file. Therefore, if you switch from insert mode to normal mode, your cursor should go back a column. 
 * About the length of `tab`: a better way to handle `\t` is to deem `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces. 
 * About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
