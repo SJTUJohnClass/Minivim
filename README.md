@@ -185,7 +185,7 @@ You can get the English word library named `words_alpha.txt` in this repo.
 
 #### <a id = "4.2.2"> Search and Substitution </a>
 
-Minivim supports searching for a word in the full file and substituting it with another word. User may use command `:sub "stone" "gold"` to substitute stone with gold.
+Minivim supports searching for a string in the full file and substituting it with another string. User may use command `:sub "stone" "gold"` to substitute stone with gold.
 
 
 #### <a id = "4.2.3"> Line Number and Jump </a>
