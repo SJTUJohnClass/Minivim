@@ -161,6 +161,7 @@ Your TUI(Terminal User Interface) should look like this.
 You should support several shortcut keys in **Normal Mode**:
 
 * `dd`: delete the entire line that the cursor is currently on.
+  - The line itself should be deleted as well.
   - If the next line exists, move the cursor to the first non-blank character of the next line.
 * `0`: Move the cursor to the beginning of the line.
 * `$`: Move the cursor to the end of the line.
