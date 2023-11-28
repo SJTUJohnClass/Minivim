@@ -138,7 +138,7 @@ Your TUI(Terminal User Interface) should look like this.
 ```
 
  This command will open a file specified by `<filename>` in your minivim. The file is under the directory of your minivim executable file. If the file doesn't exist, create it.
- You should support several optional arguments in command line:
+ You should support several **optional arguments** in command line (which can also be used together):
 
  * `-t`: open file in truncation mode. You should truncate the file from the beginning.
  * `-R`: open a file in **read-only** mode.
