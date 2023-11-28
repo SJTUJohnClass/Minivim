@@ -203,7 +203,7 @@ MiniVim supports browse commands previously entered in **Command Mode** by $\upa
 
 #### <a id = "4.2.6"> Path and relative path </a>
 
-Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file.
+Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file, like `./minivim ../testcase.txt`
 
 ### <a id = "4.3"> Conventions </a>
 
