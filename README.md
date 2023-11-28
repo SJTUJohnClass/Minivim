@@ -178,7 +178,7 @@ You should support several shortcut keys in **Normal Mode**:
 
 MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user select words.
 
-To complete the current word, the user should first press `Tab`. If there is more than one option, the user should then enter numbers (to choose the word), press $\leftarrow \rightarrow$ / $\uparrow \downarrow$ / $+ -$ (to switch between the pages, just like your `shu ru fa` I really do not know what it is in English TAT), or press `Esc` to quit. Otherwise, if there is only one option, your program should complete the words directly after 'Tab' is pressed.
+To complete the current word, the user should first press `Tab`. The user should then enter numbers (to choose the word), press $\leftarrow \rightarrow$ / $\uparrow \downarrow$ / $+ -$ (to switch between the pages, just like your Input Method Editor, aka. `shu ru fa`, or press `Esc` to quit. Otherwise, if there is only one option, your program should complete the words directly after 'Tab' is pressed.
 
 If the user wants to type `Tab`, they should press `Tab` twice if this extension is implemented.
 
