@@ -1,6 +1,6 @@
 # Assignment 2: MiniVim
 
-> Project 2 of John Class 2023.
+> Project 2 of CS1958-I.
 > Due: **November 21st**. 
 > Please do not hesitate to contact us if you have any questions about this document.
 > You can get a Chinese version of this document by throwing it into [deepl.com](https://www.deepl.com/translator).
