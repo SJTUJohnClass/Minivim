@@ -1,63 +1,64 @@
 # Assignment 2: MiniVim
 
 > Project 2 of CS1958-I.
-> Due: **November 21st**. 
+> Due: **November 21st**.
 > Please do not hesitate to contact us if you have any questions about this document.
 > You can get a Chinese version of this document by throwing it into [deepl.com](https://www.deepl.com/translator).
 > Thanks to *Zhou Jiahao* and *Yang Zhenyu*, TAs of John Class 2022 who created this project.
->
+> Thanks to *Zhao Tianlang*, TA of John Class 2023 who maintained this project.
 > Thanks to *Wang Yuxuan* for correcting lots of grammar typos.
 
 ## <a id = "1">Contents</a>
 
 - [Contents](#contents)
-- [ Introduction ](#-introduction-)
-- [ Our Purposes ](#-our-purposes-)
-- [ Assignment ](#-assignment-)
-  - [ Basic ](#-basic-)
-    - [ Base TUI ](#-base-tui-)
-    - [ Multiple modes ](#-multiple-modes-)
-    - [ Command line arguments ](#-command-line-arguments-)
-    - [ Commands ](#-commands-)
-    - [ Shortcut Keys ](#-shortcut-keys-)
-  - [ Extension ](#-extension-)
-    - [ Word Completion ](#-word-completion-)
-    - [ Search and Substitution ](#-search-and-substitution-)
-    - [ Line Number and Jump ](#-line-number-and-jump-)
-    - [ Line Wrapping ](#-line-wrapping-)
-    - [ Command History ](#-command-history-)
-    - [ Path and relative path ](#-path-and-relative-path-)
-  - [ Conventions ](#-conventions-)
-- [ Environment ](#-environment-)
-  - [ WSL Install ](#-wsl-install-)
-    - [ Install WSL ](#-install-wsl-)
-    - [ Install Building Tools ](#-install-building-tools-)
-  - [ Change APT Source(If needed) ](#-change-apt-sourceif-needed-)
-  - [ Editor files in WSL ](#-editor-files-in-wsl-)
-    - [ Use Clion to Code in WSL ](#-use-clion-to-code-in-wsl-)
-    - [ Use VSCode to code in WSL ](#-use-vscode-to-code-in-wsl-)
-  - [ Ncurses Install ](#-ncurses-install-)
-  - [ CMake Install ](#-cmake-install-)
-- [ Guideline ](#-guideline-)
-  - [ Keyboard ](#-keyboard-)
-  - [ Ncurses ](#-ncurses-)
-    - [ Window ](#-window-)
-    - [ Cursor ](#-cursor-)
-    - [ Some Setup Function ](#-some-setup-function-)
-    - [ Simple Demo ](#-simple-demo-)
-    - [ More Inforamations ](#-more-inforamations-)
-  - [ Command Line Arguments ](#-command-line-arguments--1)
-    - [ Manually Parsing ](#-manually-parsing-)
-    - [ GNU `getopt` Function(Optional) ](#-gnu-getopt-functionoptional-)
-    - [ Using Third-party Library(Optional) ](#-using-third-party-libraryoptional-)
-  - [ Project Layout ](#-project-layout-)
-    - [ Example ](#-example-)
-    - [ Build Above Project Using CMake ](#-build-above-project-using-cmake-)
+- [Introduction](#-introduction-)
+- [Our Purposes](#-our-purposes-)
+- [Assignment](#-assignment-)
+  - [Basic](#-basic-)
+    - [Base TUI](#-base-tui-)
+    - [Multiple modes](#-multiple-modes-)
+    - [Command line arguments](#-command-line-arguments-)
+    - [Commands](#-commands-)
+    - [Shortcut Keys](#-shortcut-keys-)
+    - [Path and relative path](#-path-and-relative-path-)
+  - [Extension](#-extension-)
+    - [Word Completion](#-word-completion-)
+    - [Search and Substitution](#-search-and-substitution-)
+    - [Line Number and Jump](#-line-number-and-jump-)
+    - [Line Wrapping](#-line-wrapping-)
+    - [Command History](#-command-history-)
+    - [Window Adaptability](#-window-adaptability-)
+  - [Conventions](#-conventions-)
+- [Environment](#-environment-)
+  - [WSL Install](#-wsl-install-)
+    - [Install WSL](#-install-wsl-)
+    - [Install Building Tools](#-install-building-tools-)
+  - [Change APT Source(If needed)](#-change-apt-sourceif-needed-)
+  - [Editor files in WSL](#-editor-files-in-wsl-)
+    - [Use Clion to Code in WSL](#-use-clion-to-code-in-wsl-)
+    - [Use VSCode to code in WSL](#-use-vscode-to-code-in-wsl-)
+  - [Ncurses Install](#-ncurses-install-)
+  - [CMake Install](#-cmake-install-)
+- [Guideline](#-guideline-)
+  - [Keyboard](#-keyboard-)
+  - [Ncurses](#-ncurses-)
+    - [Window](#-window-)
+    - [Cursor](#-cursor-)
+    - [Some Setup Function](#-some-setup-function-)
+    - [Simple Demo](#-simple-demo-)
+    - [More Inforamations](#-more-inforamations-)
+  - [Command Line Arguments](#-command-line-arguments--1)
+    - [Manually Parsing](#-manually-parsing-)
+    - [GNU `getopt` Function(Optional)](#-gnu-getopt-functionoptional-)
+    - [Using Third-party Library(Optional)](#-using-third-party-libraryoptional-)
+  - [Project Layout](#-project-layout-)
+    - [Example](#-example-)
+    - [Build Above Project Using CMake](#-build-above-project-using-cmake-)
     - [Using CMake to compile ncurses\_demo.cpp](#using-cmake-to-compile-ncurses_democpp)
-  - [ Introduction to Extension: Word Completion(Optional) ](#-introduction-to-extension-word-completionoptional-)
-    - [ Usage ](#-usage-)
-- [ Grade ](#-grade-)
-- [ Suggestions ](#-suggestions-)
+  - [Introduction to Extension: Word Completion(Optional)](#-introduction-to-extension-word-completionoptional-)
+    - [Usage](#-usage-)
+- [Grade](#-grade-)
+- [Suggestions](#-suggestions-)
 
 ## <a id = "2"> Introduction </a>
 
@@ -86,7 +87,6 @@ We use this project to help you
 - Use CMake to compile your project
 - Understand the compilation of multiple `.cpp`, `.h`, and other files(Optional)
 
-
 ## <a id = "4"> Assignment </a>
 
 ### <a id = "4.1"> Basic </a>
@@ -95,39 +95,32 @@ We use this project to help you
 
 Your TUI(Terminal User Interface) should look like this.
 
-* File Window displays the opened file, and you can edit a file in this window.
-* Information Window displays some file-related information. Here's the minimum information you should display: `Mode`, `Filename`, `Cursor line and column`.
-* Command Window displays the commands the user input. **Note that you should print a `:` at the beginning of the command window when entering the command mode.**
+- File Window displays the opened file, and you can edit a file in this window.
+- Information Window displays some file-related information. Here's the minimum information you should display: `Mode`, `Filename`, `Cursor line and column`.
+- Command Window displays the commands the user input. **Note that you should print a `:` at the beginning of the command window when entering the command mode.**
 
 <center>
-      <img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/windows.png" 
+      <img src="pngs/windows.png"
    alt="Window Layout"
    width="300" height="200"/>
 </center>
 
-
-
-
-
 #### <a id = "4.1.2"> Multiple modes </a>
 
- * Normal mode:
+- Normal mode:
    In normal mode, we can move the cursor and browse the opened file by $\uparrow \downarrow \leftarrow \rightarrow$.
- * Insert mode:
+- Insert mode:
    In insert mode, we can edit files by moving cursor. Edit files like appending, modifying, and deleting (just like vim).
- * Command mode:
+- Command mode:
    In command mode, we can type in and execute some commands.
 
  Mode-switching graph is shown below:
 
  <center>
- <img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/mode_transference.png" 
+ <img src="pngs/mode_transference.png"
   alt="Mode Switch"
   width="300" height="200"/>
  </center>
-
-
-
 
 #### <a id = "4.1.3"> Command line arguments </a>
 
@@ -140,37 +133,40 @@ Your TUI(Terminal User Interface) should look like this.
  This command will open a file specified by `<filename>` in your minivim. The file is under the directory of your minivim executable file. If the file doesn't exist, create it.
  You should support several **optional arguments** in command line (which can also be used together):
 
- * `-t`: open file in truncation mode. You should truncate the file from the beginning.
- * `-R`: open a file in **read-only** mode.
- * `-W break/scroll`: wrap the lines by line breaks / scrolling (extension)
+- `-t`: open file in truncation mode. You should truncate the file from the beginning.
+- `-R`: open a file in **read-only** mode.
+- `-W break/scroll`: wrap the lines by line breaks / scrolling (extension)
 
  To start your MiniVim by `minivim` rather than `PATH/TO/MiniVim`, you may need to add your executable file to `/bin` or export your executable file to `$PATH`. See more details in [Export to PATH](https://stackoverflow.com/questions/56981754/how-to-make-a-programme-executable-anywhere-in-the-shell).
-
 
 #### <a id = "4.1.4"> Commands </a>
 
  You should support several base commands:
 
- * `:w`: Save the file.
- * `:q`: Quit. Warn user if the file is changed but unsaved.
- * `:q!`: Force quit (i.e. Do not save the file and force quit.).
- * `:wq`: Save then quit.
+- `:w`: Save the file.
+- `:q`: Quit. Warn user if the file is changed but unsaved.
+- `:q!`: Force quit (i.e. Do not save the file and force quit.).
+- `:wq`: Save then quit.
 
 #### <a id = "4.1.5"> Shortcut Keys </a>
 
 You should support several shortcut keys in **Normal Mode**:
 
-* `dd`: delete the entire line that the cursor is currently on.
+- `dd`: delete the entire line that the cursor is currently on.
   - The line itself should be deleted as well.
   - If the next line exists, move the cursor to the first non-blank character of the next line.
-* `0`: Move the cursor to the beginning of the line.
-* `$`: Move the cursor to the end of the line.
-* `w`: Move forward one word (delimited by a white space or a new line). 
+- `0`: Move the cursor to the beginning of the line.
+- `$`: Move the cursor to the end of the line.
+- `w`: Move forward one word (delimited by a white space or a new line).
   - If the cursor is at a blank character or the end of a word, move the cursor to the beginning of the next word.
   - If the cursor is at the end of a line, move the cursor to the beginning of the next line if it exists..
-* `b`: Move backward one word (delimited by a white space or a new line). 
+- `b`: Move backward one word (delimited by a white space or a new line).
   - If the cursor is at a blank character or the beginning of a word, move to the end of the previous word.
   - If the cursor is at the beginning of a line, move to the end of the previous line if it exists.
+
+#### <a id = "4.1.6"> Path and relative path </a>
+
+Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file, like `./minivim ../testcase.txt`
 
 ### <a id = "4.2"> Extension </a>
 
@@ -188,7 +184,6 @@ You can get the English word library named `words_alpha.txt` in this repo.
 
 Minivim supports searching for a string in the full file and substituting it with another string. User may use command `:sub "stone" "gold"` to substitute stone with gold.
 
-
 #### <a id = "4.2.3"> Line Number and Jump </a>
 
 MiniVim supports displaying line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
@@ -201,25 +196,37 @@ In Vim, if one line has too many characters making it exceed the window, vim wil
 
 MiniVim supports browse commands previously entered in **Command Mode** by $\uparrow \downarrow$.
 
-#### <a id = "4.2.6"> Path and relative path </a>
+#### <a id = "4.2.6"> Window Adaptability </a>
 
-Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file, like `./minivim ../testcase.txt`
+You may have noticed that in Vim, you can arbitarily change the size of the window and Vim can quickly adapt to it.
+The following pictures show Vim change 400\*200 window size to 350\*200 window size:
+
+<center class="half">
+<img src="pngs/win_ada_1.png"
+   alt="Window Adaptability 1"
+   width="400" height="200"/><img
+   src="pngs/win_ada_2.png"
+   alt="Window Adaptability 2"
+   width="300" height="200"
+   />
+</center>
+
+We expect you to realize the same functionality of wim.
 
 ### <a id = "4.3"> Conventions </a>
 
 These are some conventions you need to follow. You are asked to implement these features compulsively. **Violation of these conventions may dock your score of the basic part. Please read and follow them meticulously**
 
-* If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window. 
-* Similar to vim, in normal mode, your cursor should NOT exceed the end of a line and the end of the file; whereas in insert mode, your cursor should BE ABLE TO reach the end of a line and the end of the file. Therefore, if you switch from insert mode to normal mode, your cursor should go back a column. 
-* About the length of `tab`: a better way to handle `\t` is to deem `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces. 
-* About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
-* When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of the length of this line and the following line. You need to implement this in your minivim. For example, if we have three lines with lengths of $10, 5, 12$ respectively and your cursor is at the $8$ th char of the first line. When pressing $\downarrow$, the cursor will move to the end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must ensure that now the cursor is at the $8$ th character of the third line. After that, you Press $\uparrow$ two times, and the cursor must return to the $8$ th char in the first line. In short, when pressing $\uparrow$ or $\downarrow$, minivim needs to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers. Under all circumstances, the information window should display the real `Cursor line and column`.
-* $\rightarrow$ and $\leftarrow$ are not allowed to jump to the next/previous line when at the end/beginning of a line. 
-* In break-line mode, $\downarrow$ and $\uparrow$ should jump to the next/previous line in the original text regardless of whether the current line is split into several to display or not.
-* Try to align the behavior of your MiniVim with the real Vim as much as possible. Be careful with LF("\n") and CRLF("\r\n")!
+- If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
+- Similar to vim, in normal mode, your cursor should NOT exceed the end of a line and the end of the file; whereas in insert mode, your cursor should BE ABLE TO reach the end of a line and the end of the file. Therefore, if you switch from insert mode to normal mode, your cursor should go back a column.
+- About the length of `tab`: a better way to handle `\t` is to deem `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces.
+- About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
+- When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of the length of this line and the following line. You need to implement this in your minivim. For example, if we have three lines with lengths of $10, 5, 12$ respectively and your cursor is at the $8$ th char of the first line. When pressing $\downarrow$, the cursor will move to the end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must ensure that now the cursor is at the $8$ th character of the third line. After that, you Press $\uparrow$ two times, and the cursor must return to the $8$ th char in the first line. In short, when pressing $\uparrow$ or $\downarrow$, minivim needs to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers. Under all circumstances, the information window should display the real `Cursor line and column`.
+- $\rightarrow$ and $\leftarrow$ are not allowed to jump to the next/previous line when at the end/beginning of a line.
+- In break-line mode, $\downarrow$ and $\uparrow$ should jump to the next/previous line in the original text regardless of whether the current line is split into several to display or not.
+- Try to align the behavior of your MiniVim with the real Vim as much as possible. Be careful with LF("\n") and CRLF("\r\n")!
 
 Also, if you are not sure about other features that you need to implement, please contact us directly. We will give definite answers to your questions.
-
 
 ## <a id = "5"> Environment </a>
 
@@ -282,7 +289,7 @@ But, how to write code? No no, we don't use `vim` because there is some way to a
 7. change the toolchain to "WSL" (the one you just created)
 8. click OK. if everything goes fine the debug window below shouldn't report any errors.
 
-IDEs used for this assignment are not limited, you can still use whatever you're already familiar with. 
+IDEs used for this assignment are not limited, you can still use whatever you're already familiar with.
 
 #### <a id = "5.3.2"> Use VSCode to code in WSL </a>
 
@@ -323,7 +330,7 @@ As we all know, it's easy to get the character 'a' in the alphabet by typing `'a
 
 ### <a id = "6.2"> Ncurses </a>
 
-Ncurses (new curses) is a programming library providing an application programming interface (API) that allows the programmer to write text-based user interfaces (TUI) in a terminal-independent manner. It is a toolkit for developing "GUI-like" application software that runs under a terminal emulator. 
+Ncurses (new curses) is a programming library providing an application programming interface (API) that allows the programmer to write text-based user interfaces (TUI) in a terminal-independent manner. It is a toolkit for developing "GUI-like" application software that runs under a terminal emulator.
 
 To use ncurses library, you should include header file by `#include <ncurses.h>` and link ncurses library by `g++ -o xxx xxx.cpp -lncurses` when compiling.
 
@@ -334,47 +341,34 @@ To use ncurses library, you should include header file by `#include <ncurses.h>`
 A **window** is a square area in your terminal. In this project, the whole terminal is simply divided into 3 windows.
 
 <center class="half">
-<img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/windows.png" 
+<img src="pngs/windows.png"
    alt="Window Layout"
-   width="300" height="200"/><img 
-   src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/effect.png" 
-   alt="Demo Layout" 
+   width="300" height="200"/><img
+   src="pngs/effect.png"
+   alt="Demo Layout"
    width="300" height="200"
    />
 </center>
 
-
-
-
-
-
-
-
 File window displays the opened file, and user can edit the file in this window. Information window displays some file information such as *filename*, *edit mode*, and so on. Command window displays the command input by user in command mode.
 
-At the very beginning, you need to call `initscr()` to create the initial window. A customized window can be created by calling 
+At the very beginning, you need to call `initscr()` to create the initial window. A customized window can be created by calling
 
 ```
 WINDOW *win = newwin(lines, cols, startx, starty);
 ```
 
-By the way, the coordinates of windows are shown below: 
+By the way, the coordinates of windows are shown below:
 
 <center>
-<img src="https://github.com/JohnClass2023/Minivim-2023/blob/main/pngs/axles.png" 
+<img src="pngs/axles.png"
    alt="Window Layout"
    width="300" height="200"/>
 </center>
 
-
-
-
-
-
-
 We can get the begin position by `getbegyx(win, y, x)` and the max position by `getmaxyx(win, y, x)`.
 
-Next, we want to input and output something in the window. `wprintw` and `getch` can help us. We can print "Hello world in 2022" to the windows we just created by 
+Next, we want to input and output something in the window. `wprintw` and `getch` can help us. We can print "Hello world in 2022" to the windows we just created by
 
 ```
 wprintw(win, "Hello world in %d", 2022);
@@ -400,7 +394,7 @@ In the end, **remember to call `endwin()` to destroy all windows before the prog
 
 #### <a id = "6.2.2"> Cursor </a>
 
-The **cursor** is an indicator that shows you where you are editing. We can move the cursor to $(line, col)$ in the window by calling 
+The **cursor** is an indicator that shows you where you are editing. We can move the cursor to $(line, col)$ in the window by calling
 
 ```
 wmove(win, line, col);
@@ -414,9 +408,9 @@ In fact, there are lots of functions you can use to **reduce the workload**, you
 
 #### <a id = "6.2.3"> Some Setup Function </a>
 
-* `raw()`: Normally the terminal driver buffers the characters a user types until a new line or carriage return is encountered. However, most programs require that the characters be available as soon as the user types them. The above function is used to disable line buffering.
-* `echo()` and `noecho()`: These functions control the echoing of characters typed by the user to the terminal. `noecho()` switches off echoing.
-* `keypad(win, bool)`:  It enables the reading of function keys like F1, F2, arrow keys etc. Almost every interactive program enables this, as arrow keys are a major part of any User Interface.
+- `raw()`: Normally the terminal driver buffers the characters a user types until a new line or carriage return is encountered. However, most programs require that the characters be available as soon as the user types them. The above function is used to disable line buffering.
+- `echo()` and `noecho()`: These functions control the echoing of characters typed by the user to the terminal. `noecho()` switches off echoing.
+- `keypad(win, bool)`:  It enables the reading of function keys like F1, F2, arrow keys etc. Almost every interactive program enables this, as arrow keys are a major part of any User Interface.
 
 #### <a id = "6.2.4"> Simple Demo </a>
 
@@ -455,10 +449,10 @@ Once you understand the basics, you can accept **simple** command-line arguments
 
 C/C++ introduces the `getopt` function in the header `<unistd.h>` to help programmers with the relatively tedious task of parsing. This is a convenient option if you don't want to parse manually and have to add some arguments in a simple format.
 
-Here are some tutorials and examples on `getopt`: 
+Here are some tutorials and examples on `getopt`:
 
-+ https://cloud.tencent.com/developer/article/1176216
-+ https://en.wikipedia.org/wiki/Getopt
+- <https://cloud.tencent.com/developer/article/1176216>
+- <https://en.wikipedia.org/wiki/Getopt>
 
 #### <a id = "6.3.3"> Using Third-party Library(Optional) </a>
 
@@ -466,9 +460,9 @@ It is more convenient and encouraged to use any other **third-party library** to
 
 Popular Modern C++ Argument Parsers:
 
-+ https://github.com/adishavit/argh (C++11 required)
-+ https://github.com/muellan/clipp (C++11 required)
-+ https://github.com/p-ranav/argparse (C++17 required)
+- <https://github.com/adishavit/argh> (C++11 required)
+- <https://github.com/muellan/clipp> (C++11 required)
+- <https://github.com/p-ranav/argparse> (C++17 required)
 
 You can choose the most suitable implementation yourself, as long as the required functionality is completed. :)
 
@@ -502,14 +496,14 @@ project/
 
 Above is a simple C++ project layout, let's break it down:
 
-+ `.gitignore`: Ignore non-project files like `.idea/`, `bin/`, `build/`, and so on.
-+ `README.md`: Self-introduction of your project.
-+ `CMakeLists.txt`: Tell CMake how to build your project & compile executable file.
-+ `bin/`: Save your compiled executable file (e.g., `minivim`).
-+ `build/`: Hold the compile scripts and half-compile files generated by CMake.
-+ `include/`: Header files of your own project or imported third-party project.
-+ `lib/`: Lib files (precompiled code) from imported third-party projects.
-+ `src/`: Your own `*.cpp` source code.
+- `.gitignore`: Ignore non-project files like `.idea/`, `bin/`, `build/`, and so on.
+- `README.md`: Self-introduction of your project.
+- `CMakeLists.txt`: Tell CMake how to build your project & compile executable file.
+- `bin/`: Save your compiled executable file (e.g., `minivim`).
+- `build/`: Hold the compile scripts and half-compile files generated by CMake.
+- `include/`: Header files of your own project or imported third-party project.
+- `lib/`: Lib files (precompiled code) from imported third-party projects.
+- `src/`: Your own `*.cpp` source code.
 
 Not all parts of it are necessary, e.g. the `lib` directory is not needed if no third-party libraries are introduced; you can also add directories yourself, like `scripts`, `docs`, `tests` ...
 
@@ -586,9 +580,9 @@ If all things go well, there will be a "minivim" executable in the `bin` sub-dir
 
 In order to efficiently predict target words based on their prefixes, we need to use a trie-tree. The algorithm for trie-tree is not the focus of our assignment, so you can put the implementation of the tire-tree in this link (any other implementation is acceptable) into your project:
 
-https://github.com/kephir4eg/trie
+<https://github.com/kephir4eg/trie>
 
-> Since `auto_ptr` used in this repo was deprecated in C++17, you can change it to `unique_ptr` if your Cpp standard is 17 or later. 
+> Since `auto_ptr` used in this repo was deprecated in C++17, you can change it to `unique_ptr` if your Cpp standard is 17 or later.
 
 #### <a id = "6.5.1"> Usage </a>
 
@@ -644,25 +638,28 @@ int main() {
 
 The output is `what when why`, as expected. With this library, you can predict words by their prefixes easily.
 
-
 ## <a id = "7"> Grade </a>
 
-+ Basic: total 60
-  + Base terminal user interface: 10
-  + Multiple modes & Text Edit: 25
-  + In-editor Commands: 5
-  + Command line arguments: 5
-  + File persistence: 10
-  + Shortcut Key: 5
-+ Extensions: up to 20
-  + Word Completion: 10
-  + Search and Substitution: 5
-  + Another way of line wrapping: 10
-  + Line Number and Jump: 5
-  + Command History: 5
-  + Path and relative path: 5
-+ Coding Conventions & Project Layout: 10
-+ Q & A: 10
+- Basic: total 55
+  - Base terminal user interface: 10
+  - Multiple modes & Text Edit: 20
+  - In-editor Commands: 5
+  - Command line arguments: 5
+  - File persistence: 5
+  - Shortcut Key: 5
+  - Path and relative path: 5
+- Extensions: up to 25
+  - Word Completion: 10
+  - Search and Substitution: 5
+  - Another way of line wrapping: 10
+  - Line Number and Jump: 5
+  - Command History: 5
+  - Window Adaptability: 5
+
+- Coding Conventions & Project Layout: 10
+- Q & A: 10
+
+**For more detailed realization information, please view the [our notes in SJTU](https://notes.sjtu.edu.cn/cz4UJLBwSV2Wc6vfQZc1rQ?both).**
 
 ## <a id = "8"> Suggestions </a>
 
