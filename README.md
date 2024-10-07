@@ -1,12 +1,12 @@
 # Assignment 2: MiniVim
 
-> Project 2 of CS1958-I.
-> Due: **November 21st**.
-> Please do not hesitate to contact us if you have any questions about this document.
-> You can get a Chinese version of this document by throwing it into [deepl.com](https://www.deepl.com/translator).
-> Thanks to *Zhou Jiahao* and *Yang Zhenyu*, TAs of John Class 2022 who created this project.
-> Thanks to *Zhao Tianlang*, TA of John Class 2023 who maintained this project.
-> Thanks to *Wang Yuxuan* for correcting lots of grammar typos.
+> Project 2 of CS1958-I.  
+> Due: **November 21st**.  
+> Please do not hesitate to contact us if you have any questions about this document.  
+> You can get a Chinese version of this document by throwing it into [deepl.com](https://www.deepl.com/translator).  
+> Thanks to *Zhou Jiahao* and *Yang Zhenyu*, TAs of John Class 2022 who created this project.  
+> Thanks to *Zhao Tianlang*, TA of John Class 2023 who maintained this project.  
+> Thanks to *Wang Yuxuan* for correcting lots of grammar typos.  
 
 ## <a id = "1">Contents</a>
 
@@ -211,7 +211,7 @@ The following pictures show Vim change 400\*200 window size to 350\*200 window s
    />
 </center>
 
-We expect you to realize the same functionality of wim.
+We expect you to realize the same functionality of vim.
 
 ### <a id = "4.3"> Conventions </a>
 
