@@ -1,7 +1,6 @@
 # Assignment 2: MiniVim
 
-> Project 2 of CS1958-I.  
-> Due: **November 21st**.  
+> Project 2 of CS1958-I.
 > Please do not hesitate to contact us if you have any questions about this document.  
 > You can get a Chinese version of this document by throwing it into [deepl.com](https://www.deepl.com/translator).  
 > Thanks to *Zhou Jiahao* and *Yang Zhenyu*, TAs of John Class 2022 who created this project.  
