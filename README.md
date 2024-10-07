@@ -14,6 +14,7 @@
 - [Introduction](#-introduction-)
 - [Our Purposes](#-our-purposes-)
 - [Assignment](#-assignment-)
+  - [Conventions](#-conventions-)
   - [Basic](#-basic-)
     - [Base TUI](#-base-tui-)
     - [Multiple modes](#-multiple-modes-)
@@ -28,7 +29,6 @@
     - [Line Wrapping](#-line-wrapping-)
     - [Command History](#-command-history-)
     - [Window Adaptability](#-window-adaptability-)
-  - [Conventions](#-conventions-)
 - [Environment](#-environment-)
   - [WSL Install](#-wsl-install-)
     - [Install WSL](#-install-wsl-)
@@ -89,9 +89,24 @@ We use this project to help you
 
 ## <a id = "4"> Assignment </a>
 
-### <a id = "4.1"> Basic </a>
+### <a id = "4.1"> Conventions </a>
 
-#### <a id = "4.1.1"> Base TUI </a>
+These are some conventions you need to follow. You are asked to implement these features compulsively. **Violation of these conventions may dock your score of the basic part. Please read and follow them meticulously**
+
+- If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
+- Similar to vim, in normal mode, your cursor should NOT exceed the end of a line and the end of the file; whereas in insert mode, your cursor should BE ABLE TO reach the end of a line and the end of the file. Therefore, if you switch from insert mode to normal mode, your cursor should go back a column.
+- About the length of `tab`: a better way to handle `\t` is to deem `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces.
+- About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
+- When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of the length of this line and the following line. You need to implement this in your minivim. For example, if we have three lines with lengths of $10, 5, 12$ respectively and your cursor is at the $8$ th char of the first line. When pressing $\downarrow$, the cursor will move to the end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must ensure that now the cursor is at the $8$ th character of the third line. After that, you Press $\uparrow$ two times, and the cursor must return to the $8$ th char in the first line. In short, when pressing $\uparrow$ or $\downarrow$, minivim needs to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers. Under all circumstances, the information window should display the real `Cursor line and column`.
+- $\rightarrow$ and $\leftarrow$ are not allowed to jump to the next/previous line when at the end/beginning of a line.
+- In break-line mode, $\downarrow$ and $\uparrow$ should jump to the next/previous line in the original text regardless of whether the current line is split into several to display or not.
+- Try to align the behavior of your MiniVim with the real Vim as much as possible. Be careful with LF("\n") and CRLF("\r\n")!
+
+Also, if you are not sure about other features that you need to implement, please contact us directly. We will give definite answers to your questions.
+
+### <a id = "4.2"> Basic </a>
+
+#### <a id = "4.2.1"> Base TUI </a>
 
 Your TUI(Terminal User Interface) should look like this.
 
@@ -105,7 +120,7 @@ Your TUI(Terminal User Interface) should look like this.
    width="300" height="200"/>
 </center>
 
-#### <a id = "4.1.2"> Multiple modes </a>
+#### <a id = "4.2.2"> Multiple modes </a>
 
 - Normal mode:
    In normal mode, we can move the cursor and browse the opened file by $\uparrow \downarrow \leftarrow \rightarrow$.
@@ -122,7 +137,7 @@ Your TUI(Terminal User Interface) should look like this.
   width="300" height="200"/>
  </center>
 
-#### <a id = "4.1.3"> Command line arguments </a>
+#### <a id = "4.2.3"> Command line arguments </a>
 
  User can open your minivim in terminal by command
 
@@ -139,7 +154,7 @@ Your TUI(Terminal User Interface) should look like this.
 
  To start your MiniVim by `minivim` rather than `PATH/TO/MiniVim`, you may need to add your executable file to `/bin` or export your executable file to `$PATH`. See more details in [Export to PATH](https://stackoverflow.com/questions/56981754/how-to-make-a-programme-executable-anywhere-in-the-shell).
 
-#### <a id = "4.1.4"> Commands </a>
+#### <a id = "4.2.4"> Commands </a>
 
  You should support several base commands:
 
@@ -148,7 +163,7 @@ Your TUI(Terminal User Interface) should look like this.
 - `:q!`: Force quit (i.e. Do not save the file and force quit.).
 - `:wq`: Save then quit.
 
-#### <a id = "4.1.5"> Shortcut Keys </a>
+#### <a id = "4.2.5"> Shortcut Keys </a>
 
 You should support several shortcut keys in **Normal Mode**:
 
@@ -164,13 +179,13 @@ You should support several shortcut keys in **Normal Mode**:
   - If the cursor is at a blank character or the beginning of a word, move to the end of the previous word.
   - If the cursor is at the beginning of a line, move to the end of the previous line if it exists.
 
-#### <a id = "4.1.6"> Path and relative path </a>
+#### <a id = "4.2.6"> Path and relative path </a>
 
 Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file, like `./minivim ../testcase.txt`
 
-### <a id = "4.2"> Extension </a>
+### <a id = "4.3"> Extension </a>
 
-#### <a id = "4.2.1"> Word Completion </a>
+#### <a id = "4.3.1"> Word Completion </a>
 
 MiniVim gives some options for auto-completion when user has entered the prefix. You may need an extra window to display the alternative words and let user select words.
 
@@ -180,23 +195,23 @@ If the user wants to type `Tab`, they should press `Tab` twice if this extension
 
 You can get the English word library named `words_alpha.txt` in this repo.
 
-#### <a id = "4.2.2"> Search and Substitution </a>
+#### <a id = "4.3.2"> Search and Substitution </a>
 
 Minivim supports searching for a string in the full file and substituting it with another string. User may use command `:sub "stone" "gold"` to substitute stone with gold.
 
-#### <a id = "4.2.3"> Line Number and Jump </a>
+#### <a id = "4.3.3"> Line Number and Jump </a>
 
 MiniVim supports displaying line numbers at the beginning of a line and jumping to a specific line by command `:jmp LineNumber`. You may display the specific line on the top.
 
-#### <a id = "4.2.4"> Line Wrapping </a>
+#### <a id = "4.3.4"> Line Wrapping </a>
 
 In Vim, if one line has too many characters making it exceed the window, vim will split it into several lines with them sharing the same line number. We don't make any demands of this, you can implement it as you like. But you should notice that, if you split it then you need to care about where your cursor will be if you press $\uparrow$ and $\downarrow$. On the other hand, if you're not willing to split it, then you have to scroll your windows left or right if the cursor exceeds the windows. You can choose any way you want and implement it, and you can complete this extension by implementing both, switched by using '-W break'(default) or '-W scroll' in program arguments.
 
-#### <a id = "4.2.5"> Command History </a>
+#### <a id = "4.3.5"> Command History </a>
 
 MiniVim supports browse commands previously entered in **Command Mode** by $\uparrow \downarrow$.
 
-#### <a id = "4.2.6"> Window Adaptability </a>
+#### <a id = "4.3.6"> Window Adaptability </a>
 
 You may have noticed that in Vim, you can arbitarily change the size of the window and Vim can quickly adapt to it.
 The following pictures show Vim change 400\*200 window size to 350\*200 window size:
@@ -212,21 +227,6 @@ The following pictures show Vim change 400\*200 window size to 350\*200 window s
 </center>
 
 We expect you to realize the same functionality of vim.
-
-### <a id = "4.3"> Conventions </a>
-
-These are some conventions you need to follow. You are asked to implement these features compulsively. **Violation of these conventions may dock your score of the basic part. Please read and follow them meticulously**
-
-- If the number of file lines exceeds the maximum number of lines in the file window, you should display only part of the file and scroll the file when the cursor reaches the bottom of the window.
-- Similar to vim, in normal mode, your cursor should NOT exceed the end of a line and the end of the file; whereas in insert mode, your cursor should BE ABLE TO reach the end of a line and the end of the file. Therefore, if you switch from insert mode to normal mode, your cursor should go back a column.
-- About the length of `tab`: a better way to handle `\t` is to deem `\t` as a fixed number of spaces, like 4 or 2. Also, you can simulate its behavior in Vim, but sometimes it's too complex and confusing. We highly **recommend**(just recommend) you to see it as 4 spaces.
-- About `:q!` command: If the file you are editing does not exist and was created by MiniVim, then this operation will also undo the creation.
-- When in vim you press $\downarrow$ first and $\uparrow$ second, the cursor will be at its former position instead of the length of this line and the following line. You need to implement this in your minivim. For example, if we have three lines with lengths of $10, 5, 12$ respectively and your cursor is at the $8$ th char of the first line. When pressing $\downarrow$, the cursor will move to the end of the second line because it doesn't have enough characters. Then you press $\downarrow$ again, your program must ensure that now the cursor is at the $8$ th character of the third line. After that, you Press $\uparrow$ two times, and the cursor must return to the $8$ th char in the first line. In short, when pressing $\uparrow$ or $\downarrow$, minivim needs to remember the current column of the cursor. If the new line doesn't have enough characters, then the cursor will be at the end of the line. Press $\uparrow$ or $\downarrow$ again, if this new line has enough columns, the cursor must be at the column that minivim remembers. Under all circumstances, the information window should display the real `Cursor line and column`.
-- $\rightarrow$ and $\leftarrow$ are not allowed to jump to the next/previous line when at the end/beginning of a line.
-- In break-line mode, $\downarrow$ and $\uparrow$ should jump to the next/previous line in the original text regardless of whether the current line is split into several to display or not.
-- Try to align the behavior of your MiniVim with the real Vim as much as possible. Be careful with LF("\n") and CRLF("\r\n")!
-
-Also, if you are not sure about other features that you need to implement, please contact us directly. We will give definite answers to your questions.
 
 ## <a id = "5"> Environment </a>
 
@@ -659,7 +659,7 @@ The output is `what when why`, as expected. With this library, you can predict w
 - Coding Conventions & Project Layout: 10
 - Q & A: 10
 
-**For more detailed realization information, please view the [our notes in SJTU](https://notes.sjtu.edu.cn/cz4UJLBwSV2Wc6vfQZc1rQ?both).**
+**For more detailed realization information, please view [our notes](https://notes.sjtu.edu.cn/cz4UJLBwSV2Wc6vfQZc1rQ?both).**
 
 ## <a id = "8"> Suggestions </a>
 
