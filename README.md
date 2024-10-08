@@ -165,7 +165,7 @@ You should support several shortcut keys in **Normal Mode**:
 
 #### <a id = "4.1.6"> Path and relative path </a>
 
-Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open the file, like `./minivim ../testcase.txt`
+Remember we call `minivim [options] <filename>` to use minivim and the file we open is under the directory of your minivim executable. Now you are asked to support using path and relative path to open and save the file, like `./minivim ../test/testcase.txt`
 
 ### <a id = "4.2"> Conventions </a>
 
