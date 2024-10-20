@@ -181,6 +181,7 @@ These are some conventions you need to follow. You are asked to implement these 
 - Be careful with LF("\n") and CRLF("\r\n")! If the input file format is CRLF, the output format should also be CRLF; if the input is LF, the output should also be LF. No specific format is required for newly created files.
 - \t should be four spaces long.
 - Try to align the behavior of your MiniVim with the real Vim as much as possible. Any behavior in your program that differs from the original Vim and is not explained in this document should be detailed in a separate README file.
+- You can assume that the input file is encoded in ASCII. It is guaranteed that no non-ASCII characters will appear.
 
 Also, if you are not sure about other features that you need to implement, please contact us directly. We will give definite answers to your questions.
 
